@@ -9,7 +9,7 @@
   "homepage": "https://reincal.is-a.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/calrexon/reinwebsite.git"
+    "url": "https://github.com/calrexon/natannobel-website.git"
   },
   "scripts": {
     "dev": "nuxt dev",
