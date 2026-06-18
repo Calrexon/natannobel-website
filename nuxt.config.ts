@@ -1,14 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
+  compatibilityDate: '2025-05-15',
   devtools: { enabled: false },
   features: { manifest: false },
 
   modules: [
-    '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
     '@vueuse/nuxt',
-    'nuxt-icon',
+    '@nuxt/icon',
     '@nuxt/content',
     '@nuxtjs/sitemap',
     'nuxt-schema-org',
@@ -58,10 +57,6 @@ export default defineNuxtConfig({
     preload: true,
   },
 
-  tailwindcss: {
-    cssPath: ['~/assets/css/main.css', '~/assets/css/reduced-motion.css'],
-  },
-
   content: {},
 
   sitemap: {
@@ -78,7 +73,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: ['/', '/projects', '/blog', '/donate', '/contact', '/rss.xml'],
+      routes: ['/', '/projects', '/blog', '/contact'],
     },
   },
 
@@ -86,14 +81,17 @@ export default defineNuxtConfig({
     '/': { prerender: true },
     '/projects': { prerender: true },
     '/blog': { prerender: true },
-    '/donate': { prerender: true },
     '/contact': { prerender: true },
-    '/rss.xml': { prerender: true },
   },
 
+  css: ['~/assets/css/main.css', '~/assets/css/reduced-motion.css'],
+
   vite: {
+    plugins: [
+      (await import('@tailwindcss/vite')).default(),
+    ],
     optimizeDeps: {
-      include: ['vue', 'vue-router', 'gsap'],
+      include: ['vue', 'vue-router', 'gsap', 'gsap/ScrollTrigger', '@unhead/schema-org/vue'],
     },
   },
 })

@@ -29,7 +29,7 @@
 
         <p class="bio">
           I'm a person that always sleeps all the time, but I love to make things.
-          Currently obsessed with TypeScript, Python, Rust, Svelte, and making the web feel alive.
+          Currently obsessed with TypeScript, Python, Rust, and making the web feel alive.
         </p>
 
         <!-- Discord Status -->

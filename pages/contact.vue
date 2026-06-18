@@ -122,6 +122,40 @@
       </div>
     </div>
 
+    <section class="support-section">
+      <div class="support-header">
+        <span class="tag-line">SUPPORT MY WORK</span>
+        <h2 class="support-title">FUEL THE <span class="accent">CREATIVE</span> ENGINE<span class="dot">.</span></h2>
+        <p class="support-desc">
+          If you find my projects, tools, or articles helpful, consider supporting my journey.
+        </p>
+      </div>
+      <div class="methods-grid">
+        <a
+          v-for="(method, i) in methods"
+          :key="method.name"
+          :href="method.link"
+          class="method-card"
+          :style="{ transitionDelay: `${i * 100}ms` }"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="card-inner">
+            <span class="method-icon">
+              <Icon :name="method.iconName" size="48" />
+            </span>
+            <h3 class="method-name">{{ method.name }}</h3>
+            <p class="method-desc">{{ method.desc }}</p>
+            <div class="card-footer">
+              <span class="action-text">DONATE NOW</span>
+              <span class="arrow">&rarr;</span>
+            </div>
+          </div>
+          <div class="card-border" :style="{ background: method.color }" />
+        </a>
+      </div>
+    </section>
+
   </main>
 </template>
 
@@ -142,6 +176,12 @@ const contacts = [
   { label: 'X (TWITTER)', handle: '@therealrein_', href: 'https://x.com/therealrein_', desc: 'This person sleeps all the time', iconName: 'ph:x-logo-bold', color: '#333333' },
   { label: 'DISCORD', handle: 'reincal', href: 'https://discord.com/', desc: 'Best place to reach me fast', iconName: 'ph:discord-logo-bold', color: '#5865f2' },
   { label: 'EMAIL', handle: 'reincal@emailthing.xyz', href: 'mailto:reincal@emailthing.xyz', desc: 'For serious stuff', iconName: 'ph:envelope-bold', color: '#e63329' },
+]
+
+const methods = [
+  { name: 'KO-FI', iconName: 'ph:coffee-bold', desc: 'Support with a coffee. No fees for creators.', link: 'https://ko-fi.com/reincal', color: '#FF5E5B' },
+  { name: 'PAYPAL', iconName: 'ph:credit-card-bold', desc: 'Fast and secure worldwide payments.', link: 'https://www.paypal.com/paypalme/natanrein', color: '#003087' },
+  { name: 'SAWERIA', iconName: 'ph:money-bold', desc: 'Support with saweria indonesia.', link: 'https://saweria.co/reincal', color: '#F7931A' },
 ]
 
 async function handleSubmit() {
@@ -541,6 +581,152 @@ onMounted(() => {
 
   .success-message {
     padding: 3rem 2rem;
+  }
+}
+
+/* Support / Donate Section */
+.support-section {
+  max-width: 1200px;
+  margin: 8rem auto 0;
+  padding: 4rem 0;
+  border-top: 1px solid rgba(245, 240, 232, 0.08);
+}
+
+.light .support-section {
+  border-top-color: rgba(10, 10, 15, 0.08);
+}
+
+.support-header {
+  margin-bottom: 4rem;
+}
+
+.tag-line {
+  font-family: var(--f-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.support-title {
+  font-family: var(--f-display, 'Bebas Neue', sans-serif);
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.support-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--mid);
+  max-width: 500px;
+}
+
+.methods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.method-card {
+  background: var(--paper-2);
+  padding: 2.5rem;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+  transition: transform 0.4s var(--ease-bounce), background 0.3s;
+}
+
+.method-card:hover {
+  transform: translateY(-8px);
+  background: color-mix(in srgb, var(--paper-2) 95%, var(--accent));
+}
+
+.method-card .card-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.method-icon {
+  color: var(--accent);
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.method-name {
+  font-family: var(--f-display, 'Bebas Neue', sans-serif);
+  font-size: 36px;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  margin-bottom: 0.8rem;
+}
+
+.method-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--mid);
+  margin-bottom: 2rem;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.action-text {
+  font-family: var(--f-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--ink);
+}
+
+.arrow {
+  font-size: 18px;
+  color: var(--accent);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.method-card:hover .arrow {
+  transform: translateX(8px);
+}
+
+.card-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.method-card:hover .card-border {
+  transform: scaleX(1);
+}
+
+@media (max-width: 768px) {
+  .support-section {
+    margin-top: 5rem;
+  }
+
+  .method-card {
+    min-height: 240px;
+    padding: 2rem;
   }
 }
 </style>

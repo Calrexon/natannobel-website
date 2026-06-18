@@ -1,6 +1,57 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-cyan: var(--cyan);
+  --color-neon: var(--neon);
+  --color-mid: var(--mid);
+  --color-light: var(--light);
+
+  --font-display: "Bebas Neue", "Arial Black", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-marquee: marquee 22s linear infinite;
+  --animate-noise-drift: noiseDrift 8s steps(2) infinite;
+  --animate-float-chip: floatChip 4s ease-in-out infinite;
+  --animate-frame-pulse: framePulse 3s ease-in-out infinite;
+  --animate-status-pulse: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.33%); }
+}
+
+@keyframes noiseDrift {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(-2px, 1px); }
+  50% { transform: translate(1px, -2px); }
+  75% { transform: translate(-1px, 2px); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes floatChip {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes framePulse {
+  0%, 100% { transform: translate(0,0); opacity: 1; }
+  50% { transform: translate(6px,6px); opacity: 0.6; }
+}
+
+@keyframes statusPulse {
+  0%, 100% { box-shadow: 0 0 0 0 currentColor; }
+  50% { box-shadow: 0 0 0 4px transparent; }
+}
 
 @layer base {
   :root {

@@ -57,7 +57,9 @@ const route = useRoute()
 const visible = ref(false)
 
 const { data: post } = await useAsyncData(`blog-${route.params.slug}`, () =>
-  queryContent(`blog/${route.params.slug}`).findOne()
+  queryCollection('blog')
+    .path(`/blog/${route.params.slug}`)
+    .first()
 )
 
 if (post.value) {

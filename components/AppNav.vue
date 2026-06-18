@@ -68,7 +68,6 @@ const links = [
   { href: '/', label: 'HOME' },
   { href: '/projects', label: 'PROJECTS' },
   { href: '/blog', label: 'BLOG' },
-  { href: '/donate', label: 'DONATE' },
   { href: '/contact', label: 'CONTACT' },
 ]
 

@@ -86,9 +86,9 @@ const projects = [
     link: '#', accent: '#b8ff00', year: '2025', status: 'On Development',
   },
   {
-    num: '003', name: 'Natan Nobel Website', tagline: 'Natan Nobel website using SvelteKit',
-    desc: 'A natan nobel website built with SvelteKit and Sveltia CMS for Blog',
-    stack: ['SvelteKit', 'Sveltia CMS'],
+    num: '003', name: 'Natan Nobel Website', tagline: 'Natan Nobel website using Vue and Nuxtjs',
+    desc: 'A natan nobel website built with Vue and Nuxtjs',
+    stack: ['Vue', 'Nuxtjs'],
     link: 'https://reincal.is-a.dev/', accent: '#00d4ff', year: '2023', status: 'Live',
   },
   {

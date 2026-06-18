@@ -13,8 +13,8 @@
     <div v-else class="post-list">
       <NuxtLink
         v-for="(post, i) in posts"
-        :key="post._path"
-        :to="post._path"
+        :key="post.path"
+        :to="post.path"
         class="post-card"
         :class="{ visible }"
         :style="{ transitionDelay: `${i * 100}ms` }"
@@ -46,10 +46,15 @@ useHead({
 
 const visible = ref(false)
 
-const { data: posts } = await useAsyncData('blog-list', () =>
-  queryContent('blog')
-    .sort({ date: -1 })
-    .find()
+const { data: rawPosts } = await useAsyncData('blog-list', () =>
+  queryCollection('blog')
+    .all()
+)
+
+const posts = computed(() =>
+  rawPosts.value
+    ? [...rawPosts.value].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    : []
 )
 
 function formatDate(d: string) {
